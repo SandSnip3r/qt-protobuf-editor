@@ -1,0 +1,53 @@
+syntax = "proto3";
+
+package proto.test;
+
+enum MyEnum {
+  kEnumVal0 = 0;
+  kEnumVal1 = 1;
+  kEnumVal2 = 2;
+  kEnumVal3 = 3;
+}
+
+message Nested1 {
+  string data = 1;
+}
+
+message Nested2 {
+  string data = 1;
+  Nested1 nested = 2;
+  optional Nested1 opt_nested = 3;
+}
+
+message Test {
+  string str = 1;
+  float f = 2;
+  int32 i = 3;
+  bool b = 4;
+  MyEnum enum = 5;
+  Nested2 nested = 6;
+
+  optional string opt_str = 7;
+  optional float opt_f = 8;
+  optional int32 opt_i = 9;
+  optional bool opt_b = 10;
+  optional MyEnum opt_enum = 11;
+  optional Nested2 opt_nested = 12;
+
+  repeated string rpt_str = 13;
+  repeated float rpt_f = 14;
+  repeated int32 rpt_i = 15;
+  repeated bool rpt_b = 16;
+  repeated MyEnum rpt_enum = 17;
+  repeated Nested2 rpt_nested = 18;
+
+  map<int32, string> map_int_str = 19;
+  map<int32, Nested1> map_int_nested1 = 20;
+  map<int32, Nested2> map_int_nested2 = 21;
+
+  oneof OneOf1 {
+    int32 oneof1_i = 22;
+    float oneof1_f = 23;
+    string oneof1_s = 24;
+  }
+}
